@@ -1,0 +1,1360 @@
+**********************************************CYCLE: 0**********************************************
+[0]: STATE: FETCH
+[0]::Fetch:[0]:: addi R1, R0, 24
+[0]::Fetch:[4]:: addi R2, R0, 124
+[0]::Fetch:[8]:: fld F2, 200(R0)
+[0]::Fetch:[12]:: fld F0, 0(R1)
+
+**********************************************CYCLE: 1**********************************************
+[1]: STATE: FETCH
+[1]::Fetch:[16]:: fmul F0, F0, F2
+[1]::Fetch:[20]:: fld F4, 0(R2)
+[1]::Fetch:[24]:: fadd F0, F0, F4
+[1]::Fetch:[28]:: fsd F0, 0(R2)
+
+[1]: STATE: DECODE
+[1]: Id: 0, Inst:'[addi R1, R0, 24]', State:'Decode', op:'addi', d:'p1', s1:'p0', s2:'24'
+[1]: Id: 1, Inst:'[addi R2, R0, 124]', State:'Decode', op:'addi', d:'p2', s1:'p0', s2:'124'
+[1]: Id: 2, Inst:'[fld F2, 200(R0)]', State:'Decode', op:'fld', d:'p3', s1:'200', s2:'p0'
+[1]: Id: 3, Inst:'[fld F0, 0(R1)]', State:'Decode', op:'fld', d:'p4', s1:'0', s2:'p1'
+[1]: Id: 4, Inst:'[fmul F0, F0, F2]', State:'Decode', op:'fmul', d:'p5', s1:'p4', s2:'p3'
+[1]: Id: 5, Inst:'[fld F4, 0(R2)]', State:'Decode', op:'fld', d:'p6', s1:'0', s2:'p2'
+[1]: Id: 6, Inst:'[fadd F0, F0, F4]', State:'Decode', op:'fadd', d:'p7', s1:'p5', s2:'p6'
+[1]: Id: 7, Inst:'[fsd F0, 0(R2)]', State:'Decode', op:'fsd', d:'0', s1:'p7', s2:'p2'
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6']}
+
+Free Registers: ['p8', 'p9', 'p10', 'p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 0, ROB0], 'p2': [True, 0, ROB1], 'p3': [True, 0, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Decode|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Decode|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Decode|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|True|instr_id=0|instr=[addi R1, R0, 24]|op=addi|vj=p0 |vk=24 |qj=None |qk=None |dest=ROB0|
+|INT1|True|instr_id=1|instr=[addi R2, R0, 124]|op=addi|vj=p0 |vk=124 |qj=None |qk=None |dest=ROB1|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|True|instr_id=2|instr=[fld F2, 200(R0)]|op=fld|vj=200 |vk=p0 |qj=None |qk=None |dest=ROB2|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[1]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6']}
+
+Free Registers: ['p8', 'p9', 'p10', 'p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 24, ROB0], 'p2': [True, 0, ROB1], 'p3': [True, 12, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Execution Complete|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Decode|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Execution Complete|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|True|instr_id=1|instr=[addi R2, R0, 124]|op=addi|vj=p0 |vk=124 |qj=None |qk=None |dest=ROB1|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+**********************************************CYCLE: 2**********************************************
+[2]: STATE: FETCH
+[2]::Fetch:[32]:: addi R1, R1, -8
+[2]::Fetch:[36]:: addi R2, R2, -8
+[2]::Fetch:[40]:: bne R1,$0, 12
+[2]: STATE: DECODE
+[2]: Id: 8, Inst:'[addi R1, R1, -8]', State:'Decode', op:'addi', d:'p8', s1:'p1', s2:'-8'
+[2]: Id: 9, Inst:'[addi R2, R2, -8]', State:'Decode', op:'addi', d:'p9', s1:'p2', s2:'-8'
+[2]: Id: 10, Inst:'[bne R1,$0, 12]', State:'Decode', op:'bne', d:'12', s1:'p8', s2:'p10'
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 24, ROB0], 'p2': [True, 0, ROB1], 'p3': [True, 12, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Execution Complete|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Decode|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Execution Complete|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|True|instr_id=1|instr=[addi R2, R0, 124]|op=addi|vj=p0 |vk=124 |qj=None |qk=None |dest=ROB1|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[2]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 24, ROB0], 'p2': [True, 124, ROB1], 'p3': [True, 12, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Execution Complete|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Execution Complete|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Execution Complete|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 3**********************************************
+[3]: STATE: FETCH
+[3]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 24, ROB0], 'p2': [True, 124, ROB1], 'p3': [True, 12, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Ready For WriteBack|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Ready For WriteBack|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Ready For WriteBack|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[3]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [True, 24, ROB0], 'p2': [True, 124, ROB1], 'p3': [True, 12, ROB2], 'p4': [False, 0, None], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:0|name=ROB0|busy=True|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Ready For WriteBack|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=Ready For WriteBack|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Ready For WriteBack|
+inst_id:None|name=ROB3|busy=False|inst='None'|dest=None|rr=None|state=None|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB0', 'p1'], ['ROB1', 'p2'], ['ROB2', 'p3']]
+
+**********************************************CYCLE: 4**********************************************
+[4]: STATE: FETCH
+[4]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [True, 124, ROB1], 'p3': [True, 12, ROB2], 'p4': [True, 0, ROB3], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 1 || Tail: 0
+inst_id:0|name=ROB0|busy=False|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Commit|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=WriteBack|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=WriteBack|
+inst_id:3|name=ROB3|busy=True|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|True|instr_id=3|instr=[fld F0, 0(R1)]|op=fld|vj=0 |vk=p1 |qj=None |qk=None |dest=ROB3|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[4]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [True, 124, ROB1], 'p3': [True, 12, ROB2], 'p4': [True, 10, ROB3], 'p5': [False, 0, None], 'p6': [False, 0, None], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 1 || Tail: 0
+inst_id:0|name=ROB0|busy=False|inst='addi R1, R0, 24'|dest=R1|rr=p1|state=Commit|
+inst_id:1|name=ROB1|busy=True|inst='addi R2, R0, 124'|dest=R2|rr=p2|state=WriteBack|
+inst_id:2|name=ROB2|busy=True|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=WriteBack|
+inst_id:3|name=ROB3|busy=True|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Execution Complete|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 5**********************************************
+[5]: STATE: FETCH
+[5]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [True, 10, ROB3], 'p5': [True, 0, ROB0], 'p6': [True, 0, ROB1], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Decode|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Decode|
+inst_id:2|name=ROB2|busy=False|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Commit|
+inst_id:3|name=ROB3|busy=True|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Ready For WriteBack|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|True|instr_id=5|instr=[fld F4, 0(R2)]|op=fld|vj=0 |vk=p2 |qj=None |qk=None |dest=ROB1|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=None |vk=p3 |qj=ROB3 |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[5]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [True, 10, ROB3], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [False, 0, None], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Decode|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Execution Complete|
+inst_id:2|name=ROB2|busy=False|inst='fld F2, 200(R0)'|dest=F2|rr=p3|state=Commit|
+inst_id:3|name=ROB3|busy=True|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Ready For WriteBack|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=None |vk=p3 |qj=ROB3 |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB3', 'p4']]
+
+**********************************************CYCLE: 6**********************************************
+[6]: STATE: FETCH
+[6]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Decode|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Ready For WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=None |qj=ROB0 |qk=ROB1 |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=None |vk=p3 |qj=ROB3 |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[6]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Ready For WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=None |qj=ROB0 |qk=ROB1 |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB1', 'p6']]
+
+**********************************************CYCLE: 7**********************************************
+[7]: STATE: FETCH
+[7]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=None |qj=ROB0 |qk=ROB1 |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[7]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 8**********************************************
+[8]: STATE: FETCH
+[8]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[8]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 9**********************************************
+[9]: STATE: FETCH
+[9]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Executing|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|True|instr_id=4|instr=[fmul F0, F0, F2]|op=fmul|vj=p4 |vk=p3 |qj=None |qk=None |dest=ROB0|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[9]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 120.0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Execution Complete|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 10**********************************************
+[10]: STATE: FETCH
+[10]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 120.0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Ready For WriteBack|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[10]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p5', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 10, None], 'p5': [True, 120.0, ROB0], 'p6': [True, 8, ROB1], 'p7': [True, 0, ROB2], 'p8': [False, 0, None], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 0 || Tail: 3
+inst_id:4|name=ROB0|busy=True|inst='fmul F0, F0, F2'|dest=F0|rr=p5|state=Ready For WriteBack|
+inst_id:5|name=ROB1|busy=True|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=WriteBack|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:3|name=ROB3|busy=False|inst='fld F0, 0(R1)'|dest=F0|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB0', 'p5']]
+
+**********************************************CYCLE: 11**********************************************
+[11]: STATE: FETCH
+[11]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 120.0, ROB0], 'p6': [False, 8, None], 'p7': [True, 0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Decode|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Decode|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|True|instr_id=8|instr=[addi R1, R1, -8]|op=addi|vj=p1 |vk=-8 |qj=None |qk=None |dest=ROB0|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=None |vk=p6 |qj=ROB0 |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[11]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Execution Complete|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Executing|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=p5 |vk=p6 |qj=None |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 12**********************************************
+[12]: STATE: FETCH
+[12]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Ready For WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Executing|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=p5 |vk=p6 |qj=None |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[12]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Ready For WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Executing|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=p5 |vk=p6 |qj=None |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB0', 'p8']]
+
+**********************************************CYCLE: 13**********************************************
+[13]: STATE: FETCH
+[13]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Executing|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|True|instr_id=6|instr=[fadd F0, F0, F4]|op=fadd|vj=p5 |vk=p6 |qj=None |qk=None |dest=ROB2|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[13]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Execution Complete|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 14**********************************************
+[14]: STATE: FETCH
+[14]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Ready For WriteBack|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[14]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4', 'p7'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 120.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [True, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [False, 0, None], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 1
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:5|name=ROB1|busy=False|inst='fld F4, 0(R2)'|dest=F4|rr=p6|state=Commit|
+inst_id:6|name=ROB2|busy=True|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Ready For WriteBack|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB2', 'p7']]
+
+**********************************************CYCLE: 15**********************************************
+[15]: STATE: FETCH
+[15]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [True, 0, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Decode|
+inst_id:6|name=ROB2|busy=False|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Commit|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=0|rr=p4|state=Decode|
+
+              RESERVATION STATUS TABLE
+|INT0|True|instr_id=9|instr=[addi R2, R2, -8]|op=addi|vj=p2 |vk=-8 |qj=None |qk=None |dest=ROB1|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|True|instr_id=7|instr=[fsd F0, 0(R2)]|op=fsd|vj=None |vk=p2 |qj=ROB2 |qk=None |dest=ROB3|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[15]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [True, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Execution Complete|
+inst_id:6|name=ROB2|busy=False|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Commit|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Execution Complete|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 16**********************************************
+[16]: STATE: FETCH
+[16]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [True, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Ready For WriteBack|
+inst_id:6|name=ROB2|busy=False|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Commit|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Ready For WriteBack|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[16]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1', 'p8'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 24, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [True, 0, ROB0], 'p9': [True, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 3 || Tail: 2
+inst_id:8|name=ROB0|busy=True|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=WriteBack|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Ready For WriteBack|
+inst_id:6|name=ROB2|busy=False|inst='fadd F0, F0, F4'|dest=F0|rr=p7|state=Commit|
+inst_id:7|name=ROB3|busy=True|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Ready For WriteBack|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB1', 'p9'], ['ROB3', 'p4']]
+
+**********************************************CYCLE: 17**********************************************
+[17]: STATE: FETCH
+[17]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7', 'p8']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 0, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [False, 0, ROB0], 'p9': [True, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 1 || Tail: 3
+inst_id:8|name=ROB0|busy=False|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Commit|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=WriteBack|
+inst_id:10|name=ROB2|busy=True|inst='bne R1,$0, 12'|dest=12|rr=p7|state=Decode|
+inst_id:7|name=ROB3|busy=False|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|True|instr_id=10|instr=[bne R1,$0, 12]|op=bne|vj=p8 |vk=p10 |qj=None |qk=None |dest=ROB2|
+
+[17]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2', 'p9'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7', 'p8']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 0, None], 'p2': [False, 124, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [False, 0, ROB0], 'p9': [True, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 1 || Tail: 3
+inst_id:8|name=ROB0|busy=False|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Commit|
+inst_id:9|name=ROB1|busy=True|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=WriteBack|
+inst_id:10|name=ROB2|busy=True|inst='bne R1,$0, 12'|dest=12|rr=p7|state=Execution Complete|
+inst_id:7|name=ROB3|busy=False|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: []
+
+**********************************************CYCLE: 18**********************************************
+[18]: STATE: FETCH
+[18]: STATE: DECODE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7', 'p8', 'p9']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 0, None], 'p2': [False, 116, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [False, 0, ROB0], 'p9': [False, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 3
+inst_id:8|name=ROB0|busy=False|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Commit|
+inst_id:9|name=ROB1|busy=False|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Commit|
+inst_id:10|name=ROB2|busy=True|inst='bne R1,$0, 12'|dest=12|rr=p7|state=Ready For WriteBack|
+inst_id:7|name=ROB3|busy=False|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+[18]: STATE: EXECUTE
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7', 'p8', 'p9']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 0, None], 'p2': [False, 116, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [False, 0, ROB0], 'p9': [False, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+         Head: 2 || Tail: 3
+inst_id:8|name=ROB0|busy=False|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Commit|
+inst_id:9|name=ROB1|busy=False|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Commit|
+inst_id:10|name=ROB2|busy=True|inst='bne R1,$0, 12'|dest=12|rr=p7|state=Ready For WriteBack|
+inst_id:7|name=ROB3|busy=False|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+Common Data Bus: [['ROB2', 'p7']]
+
+**********************************************CYCLE: 19**********************************************
+[19]: STATE: FETCH
+
+Register Mapping: {'R0': ['p0'], 'R1': ['p1'], 'R2': ['p2'], 'F2': ['p3'], 'F0': ['p4'], 'F4': ['p6'], '$0': ['p10']}
+
+Free Registers: ['p11', 'p12', 'p13', 'p14', 'p15', 'p16', 'p17', 'p18', 'p19', 'p20', 'p21', 'p22', 'p23', 'p24', 'p25', 'p26', 'p27', 'p28', 'p29', 'p30', 'p31', 'p5', 'p7', 'p8', 'p9']
+
+Register Values: {'p0': [False, 0, None], 'p1': [False, 0, None], 'p2': [False, 116, None], 'p3': [False, 12, None], 'p4': [False, 24.0, None], 'p5': [False, 16, ROB0], 'p6': [False, 8, None], 'p7': [False, 24.0, ROB2], 'p8': [False, 0, ROB0], 'p9': [False, 116, ROB1], 'p10': [False, 0, None], 'p11': [False, 0, None], 'p12': [False, 0, None], 'p13': [False, 0, None], 'p14': [False, 0, None], 'p15': [False, 0, None], 'p16': [False, 0, None], 'p17': [False, 0, None], 'p18': [False, 0, None], 'p19': [False, 0, None], 'p20': [False, 0, None], 'p21': [False, 0, None], 'p22': [False, 0, None], 'p23': [False, 0, None], 'p24': [False, 0, None], 'p25': [False, 0, None], 'p26': [False, 0, None], 'p27': [False, 0, None], 'p28': [False, 0, None], 'p29': [False, 0, None], 'p30': [False, 0, None], 'p31': [False, 0, None], }
+
+Architected Register Values: {'R0': 0, 'R1': 0, 'R2': 116, 'F2': 12, 'F0': 24.0, 'F4': 8, '$0': 0}
+
+Main Memory: ['[0 : 111]', '[8 : 14]', '[16 : 5]', '[24 : 10]', '[32 : 0]', '[40 : 0]', '[48 : 0]', '[56 : 0]', '[64 : 0]', '[72 : 0]', '[80 : 0]', '[88 : 0]', '[96 : 0]', '[104 : 0]', '[112 : 0]', '[120 : 0]', '[128 : 0]', '[136 : 0]', '[144 : 0]', '[152 : 0]', '[160 : 0]', '[168 : 0]', '[176 : 0]', '[184 : 0]', '[192 : 0]', '[200 : 12]']
+
+         Head: 3 || Tail: 3
+inst_id:8|name=ROB0|busy=False|inst='addi R1, R1, -8'|dest=R1|rr=p8|state=Commit|
+inst_id:9|name=ROB1|busy=False|inst='addi R2, R2, -8'|dest=R2|rr=p9|state=Commit|
+inst_id:10|name=ROB2|busy=False|inst='bne R1,$0, 12'|dest=12|rr=p7|state=Commit|
+inst_id:7|name=ROB3|busy=False|inst='fsd F0, 0(R2)'|dest=124|rr=p4|state=Commit|
+
+              RESERVATION STATUS TABLE
+|INT0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|INT3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Load1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|Store1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPadd2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult2|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPmult3|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|FPdiv1|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+|BU0|False|instr_id=None|instr=[None]|op=None|vj=None |vk=None |qj=None |qk=None |dest=None|
+
+{'RS': 0, 'ROB': 16, 'CDB': 0}
